@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anu Alele - Product Manager Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Crimson+Pro:wght@300;600;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a2540;
+            --accent: #4fc3f7;
+            --text: #1a1a1a;
+            --text-light: #666;
+            --bg: #ffffff;
+            --bg-alt: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary) 0%, #1a3a52 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,0.03) 35px, rgba(255,255,255,0.03) 70px);
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-text .tagline {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .hero-text p {
+            font-size: 22px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid var(--accent);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 40px;
+        }
+
+        .section-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .section-intro {
+            font-size: 20px;
+            color: var(--text-light);
+            max-width: 700px;
+            margin-bottom: 60px;
+        }
+
+        /* Methodology Section */
+        .methodology {
+            background: var(--bg-alt);
+        }
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .method-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .method-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .method-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .method-card h3 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 16px;
+            color: var(--accent);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .method-card p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Case Study */
+        .case-study-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .case-study-header h2 {
+            font-size: 56px;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* Comparison */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 60px 0;
+            padding: 60px;
+            background: var(--bg-alt);
+            border-radius: 16px;
+        }
+
+        .comparison-side h3 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .comparison-side.before h3 { color: #999; }
+        .comparison-side.after h3 { color: var(--accent); }
+
+        .comparison-box {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .comparison-stat {
+            font-size: 48px;
+            font-weight: 900;
+            margin: 12px 0;
+        }
+
+        .comparison-side.before .comparison-stat { color: #999; }
+        .comparison-side.after .comparison-stat { color: var(--accent); }
+
+        /* Metrics */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin: 80px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, var(--primary), #1a3a52);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .metric-number {
+            font-size: 56px;
+            font-weight: 900;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .metric-label {
+            font-size: 18px;
+        }
+
+        .metric-growth {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            margin-top: 12px;
+            color: var(--accent);
+        }
+
+        /* Approach */
+        .approach-step {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .approach-step:last-child {
+            border-bottom: none;
+        }
+
+        .step-number {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            font-size: 32px;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .step-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .step-content ul {
+            margin-left: 24px;
+            font-size: 18px;
+            line-height: 2;
+        }
+
+        .highlight-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--accent);
+            padding: 24px;
+            margin: 24px 0;
+            border-radius: 8px;
+        }
+
+        /* Results */
+        .results {
+            background: var(--primary);
+            color: white;
+        }
+
+        .results h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .result-item {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+        }
+
+        .result-icon {
+            font-size: 64px;
+            margin-bottom: 24px;
+        }
+
+        .result-item h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: var(--accent);
+        }
+
+        .result-item p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-text h1 { font-size: 48px; }
+            .method-grid { grid-template-columns: repeat(2, 1fr); }
+            .metrics { grid-template-columns: repeat(2, 1fr); }
+            .comparison { grid-template-columns: 1fr; }
+            .approach-step { grid-template-columns: 1fr; }
+            .results-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-text">
+            <div class="tagline">Analytically-Driven Product Manager</div>
+            <h1>From Lab to Launch</h1>
+            <p>I bring a chemist's precision to product development: isolate variables, test systematically, measure outcomes.</p>
+        </div>
+        <div class="hero-image">
+            <img src="Anu_Alele_Headshot.png" alt="Anu Alele">
+        </div>
+    </div>
+</section>
+
+<!-- Methodology -->
+<section class="methodology">
+    <div class="section-wrapper">
+        <h2>My Product Development Process</h2>
+        <p class="section-intro">I treat product development like experimental design—the same systematic approach I learned in the chemistry lab.</p>
+        <div class="method-grid">
+            <div class="method-card">
+                <div class="method-icon">🔬</div>
+                <h3>Form Hypothesis</h3>
+                <p>Start with user research to identify pain points and form testable hypotheses about solutions.</p>
+            </div>
+            <div class="method-card">
+                <div class="method-icon">⚗️</div>
+                <h3>Isolate Variables</h3>
+                <p>Decompose complex problems into individual variables to understand what's actually driving outcomes.</p>
+            </div>
+            <div class="method-card">
+                <div class="method-icon">📊</div>
+                <h3>Test Systematically</h3>
+                <p>Run controlled experiments through beta rollouts, A/B tests, and phased launches.</p>
+            </div>
+            <div class="method-card">
+                <div class="method-icon">📈</div>
+                <h3>Measure Outcomes</h3>
+                <p>Track precise metrics to validate hypotheses and make data-informed iteration decisions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Case Study -->
+<section>
+    <div class="section-wrapper">
+        <div class="case-study-header">
+            <h2>Transforming a Job Board into a Revenue Platform</h2>
+            <p class="subtitle">How I repositioned JSJOBBS from free listings to a monetized talent marketplace</p>
+        </div>
+
+        <div class="comparison">
+            <div class="comparison-side before">
+                <h3>Before (2021)</h3>
+                <div class="comparison-box">
+                    <div class="comparison-stat">$0</div>
+                    <p><strong>Revenue</strong></p>
+                    <div class="comparison-stat" style="margin-top: 20px;">5,000</div>
+                    <p><strong>Applications</strong></p>
+                    <p style="margin-top: 20px; font-size: 14px; color: #999;">Single-page job board<br>No differentiation</p>
+                </div>
+            </div>
+            <div class="comparison-side after">
+                <h3>After (2022-2023)</h3>
+                <div class="comparison-box">
+                    <div class="comparison-stat">+300%</div>
+                    <p><strong>Revenue Growth</strong></p>
+                    <div class="comparison-stat" style="margin-top: 20px;">22,900</div>
+                    <p><strong>Applications</strong></p>
+                    <p style="margin-top: 20px; font-size: 14px; color: var(--accent);">Multi-sided marketplace<br>Community leader</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="metrics">
+            <div class="metric-card">
+                <span class="metric-number">+358%</span>
+                <div class="metric-label">Applications Growth</div>
+                <div class="metric-growth">5K → 22.9K (YoY)</div>
+            </div>
+            <div class="metric-card">
+                <span class="metric-number">+300%</span>
+                <div class="metric-label">Revenue Growth</div>
+                <div class="metric-growth">$0 → Revenue Stream</div>
+            </div>
+            <div class="metric-card">
+                <span class="metric-number">+259%</span>
+                <div class="metric-label">Newsletter Growth</div>
+                <div class="metric-growth">3.2K → 11.5K</div>
+            </div>
+            <div class="metric-card">
+                <span class="metric-number">100%</span>
+                <div class="metric-label">Paid Job Increase</div>
+                <div class="metric-growth">Launch Year Impact</div>
+            </div>
+        </div>
+
+        <div>
+            <div class="approach-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>The Problem</h3>
+                    <p>In 2021, JSJOBBS was a single-page job board competing with Indeed, LinkedIn, and every other generic listing site. We had zero revenue, low engagement (5,000 total applications), and no clear differentiation.</p>
+                    <div class="highlight-box">
+                        <strong>Hypothesis:</strong> "We're competing in a red ocean. If we own the JavaScript hiring vertical, we can build a sustainable business model."
+                    </div>
+                </div>
+            </div>
+
+            <div class="approach-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>My Experimental Approach</h3>
+                    <p>I applied chemistry-style systematic testing to three key variables:</p>
+                    <div class="highlight-box">
+                        <strong>Variable 1: Product Positioning</strong><br>
+                        • Conducted 30+ interviews with developers and employers<br>
+                        • Finding: JS developers wanted curated, relevant jobs<br>
+                        • Result: Repositioned as "hiring extension of all JS communities"
+                    </div>
+                    <div class="highlight-box">
+                        <strong>Variable 2: Monetization Model</strong><br>
+                        • Created tiered value ladder (Basic $79 → Featured $149)<br>
+                        • Tested pricing based on distribution reach<br>
+                        • Result: 300%+ revenue growth at V2 launch
+                    </div>
+                    <div class="highlight-box">
+                        <strong>Variable 3: Two-Sided Marketplace</strong><br>
+                        • Built developer profiles with 80% completion requirement<br>
+                        • Enabled direct employer-to-developer outreach<br>
+                        • Result: Applications grew 4.6x faster than job postings
+                    </div>
+                </div>
+            </div>
+
+            <div class="approach-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Systematic Execution</h3>
+                    <p>I didn't build everything at once. I followed a phased rollout strategy:</p>
+                    <p><strong>Feb 2021:</strong> Launched basic job board</p>
+                    <p><strong>May 2022:</strong> Introduced payments and tiered pricing</p>
+                    <p><strong>April 2023:</strong> Launched V2 with developer profiles</p>
+                    <p><strong>Q4 2023:</strong> Rolled out employer profiles and partnerships</p>
+                </div>
+            </div>
+
+            <div class="approach-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Product Requirements I Defined</h3>
+                    <p>I created detailed PRDs covering:</p>
+                    <ul>
+                        <li>3 distinct user personas (Developers, Employers, Distribution Partners)</li>
+                        <li>Success metrics for each persona journey</li>
+                        <li>User flow mapping with edge cases covered</li>
+                        <li>Dependency chains (homepage → dev profiles → employer features)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Results -->
+<section class="results">
+    <div class="section-wrapper">
+        <h2>Results That Matter</h2>
+        <div class="results-grid">
+            <div class="result-item">
+                <div class="result-icon">📈</div>
+                <h3>Explosive Growth</h3>
+                <p>Applications grew 358% YoY—4.6x faster than job postings, proving we activated marketplace dynamics</p>
+            </div>
+            <div class="result-item">
+                <div class="result-icon">💰</div>
+                <h3>Revenue Generated</h3>
+                <p>From $0 to revenue in Year 1, with 300%+ growth at V2 launch plus recurring ad placement revenue</p>
+            </div>
+            <div class="result-item">
+                <div class="result-icon">🎯</div>
+                <h3>Market Leadership</h3>
+                <p>Became the go-to platform for JavaScript hiring, trusted by Clipboard, Tiller, Scalio, and Kodify</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Takeaways -->
+<section>
+    <div class="section-wrapper">
+        <h2>Key Takeaways</h2>
+        <div>
+            <div class="approach-step">
+                <div class="step-number">✓</div>
+                <div class="step-content">
+                    <h3>I Don't Just Ship Features—I Reposition Products</h3>
+                    <p>Most PMs would have added a pricing page and called it done. I transformed a commodity job board into the de facto hiring platform for the JavaScript community through systematic repositioning, marketplace design, and tiered monetization.</p>
+                </div>
+            </div>
+            <div class="approach-step">
+                <div class="step-number">✓</div>
+                <div class="step-content">
+                    <h3>Chemistry Methodology Translates to Product Success</h3>
+                    <p>My experimental approach—isolate variables, test hypotheses, measure precisely—isn't theoretical. It delivered 358% growth and generated revenue from zero.</p>
+                </div>
+            </div>
+            <div class="approach-step">
+                <div class="step-number">✓</div>
+                <div class="step-content">
+                    <h3>Two-Sided Marketplaces Require Systematic Thinking</h3>
+                    <p>Building for developers, employers, and distribution partners simultaneously is complex. I succeeded by phasing rollouts, defining clear dependencies, and validating each layer before scaling.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="contact">
+    <div class="section-wrapper">
+        <h2>Let's Work Together</h2>
+        <p class="section-intro" style="margin: 24px auto;">I'm looking for remote Product Manager roles where I can bring systematic thinking, 0→1 expertise, and chemistry-driven rigor to ambitious product challenges.</p>
+        <div class="contact-links">
+            <a href="mailto:anualele@gmail.com" class="btn btn-primary">Email Me</a>
+            <a href="https://linkedin.com/in/anu-alele" target="_blank" class="btn btn-secondary">LinkedIn</a>
+            <a href="Anu_Alele_PM_Resume_ANALYTICAL.docx" class="btn btn-secondary" download>Download CV</a>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
